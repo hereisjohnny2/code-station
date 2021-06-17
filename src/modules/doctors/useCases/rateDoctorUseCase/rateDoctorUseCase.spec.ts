@@ -1,18 +1,22 @@
 import { AppError } from "../../../../shared/errors/AppError";
 import { UsersRepositoryInMemory } from "../../../accounts/respositories/in-memory/UsersRepositoryInMemory";
 import { IUsersRepository } from "../../../accounts/respositories/IUsersRepository";
+import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 import { IDoctorsRepository } from "../../repositories/IDoctorsRepository";
+import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoryRepositoryInMemory";
 import { DoctorsRepositoryInMemory } from "../../repositories/in-memory/DoctorsRepositoryInMemory";
 import { RateDoctorUseCase } from "./rateDoctorUseCase";
 
 let usersRepository: IUsersRepository;
 let doctorsRepository: IDoctorsRepository;
+let categoryRepository: ICategoriesRepository;
 let rateDoctorUseCase: RateDoctorUseCase;
 
 describe("Rate Doctor", () => {
   beforeEach(() => {
     usersRepository = new UsersRepositoryInMemory();
     doctorsRepository = new DoctorsRepositoryInMemory();
+    categoryRepository = new CategoriesRepositoryInMemory();
     rateDoctorUseCase = new RateDoctorUseCase(doctorsRepository);
   });
 
@@ -24,12 +28,18 @@ describe("Rate Doctor", () => {
       telefone: "22222222",
     });
 
+    const category = await categoryRepository.create({
+      name: "Category 1",
+      symptomesAssociated: ["symptome1", "symptome2"],
+    });
+
     const doctor = await doctorsRepository.create({
       user_id: user.id,
       crm: 123456789,
       clinicAdress: "St. A, 123",
       bio: "User's Bio",
       availableAgenda: "Mon. 18:00 - 20:00",
+      category,
     });
 
     await rateDoctorUseCase.execute({

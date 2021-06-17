@@ -1,4 +1,4 @@
-import { ICreateDoctorDTO } from "../dtos/CreateDoctorDTO";
+import { ICreateDoctorDTO } from "../dtos/ICreateDoctorDTO";
 import { Doctor } from "../infra/typeorm/entities/Doctor";
 
 interface IDoctorsRepository {

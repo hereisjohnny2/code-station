@@ -1,4 +1,4 @@
-import { ICreateDoctorDTO } from "../../dtos/CreateDoctorDTO";
+import { ICreateDoctorDTO } from "../../dtos/ICreateDoctorDTO";
 import { Doctor } from "../../infra/typeorm/entities/Doctor";
 import { IDoctorsRepository } from "../IDoctorsRepository";
 
@@ -19,6 +19,7 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
     clinicAdress,
     availableAgenda,
     bio,
+    category,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const doctor = new Doctor();
     Object.assign(doctor, {
@@ -27,6 +28,7 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
       clinicAdress,
       availableAgenda,
       bio,
+      category,
     });
     this.doctors.push(doctor);
 

@@ -1,3 +1,5 @@
+import { Category } from "./Category";
+
 class Doctor {
   user_id: string;
   crm: number;
@@ -6,6 +8,7 @@ class Doctor {
   rating: number;
   ratingCount: number;
   bio: string;
+  category: Category;
   created_at?: Date;
   updated_at?: Date;
 

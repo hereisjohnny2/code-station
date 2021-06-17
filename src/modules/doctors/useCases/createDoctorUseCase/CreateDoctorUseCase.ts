@@ -1,6 +1,6 @@
 import { AppError } from "../../../../shared/errors/AppError";
 import { IUsersRepository } from "../../../accounts/respositories/IUsersRepository";
-import { ICreateDoctorDTO } from "../../dtos/CreateDoctorDTO";
+import { ICreateDoctorDTO } from "../../dtos/ICreateDoctorDTO";
 import { Doctor } from "../../infra/typeorm/entities/Doctor";
 import { IDoctorsRepository } from "../../repositories/IDoctorsRepository";
 
@@ -16,6 +16,7 @@ class CreateDoctorUseCase {
     availableAgenda,
     clinicAdress,
     bio,
+    category,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const userExists = await this.usersRepository.findById(user_id);
 
@@ -29,6 +30,7 @@ class CreateDoctorUseCase {
       availableAgenda,
       clinicAdress,
       bio,
+      category,
     });
 
     return user;
