@@ -16,8 +16,8 @@ class RateDoctorUseCase {
       throw new AppError("Doctor not found with such ID");
     }
 
-    doctor.rating = rate;
     doctor.ratingCount += 1;
+    doctor.rating = (doctor.rating + rate) / doctor.ratingCount;
 
     await this.doctorsRepository.create(doctor);
   }

@@ -38,7 +38,7 @@ describe("List Doctors", () => {
       clinicAdress: "St. A, 123",
       bio: "User's Bio",
       availableAgenda: "Mon. 18:00 - 20:00",
-      category,
+      category_id: category.id,
     });
 
     const doctors = await listDoctorsUseCase.execute();

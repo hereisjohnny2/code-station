@@ -15,7 +15,7 @@ class Category {
   @Column()
   name: string;
 
-  @Column()
+  @Column("simple-array")
   symptomesAssociated: string[];
 
   @CreateDateColumn()

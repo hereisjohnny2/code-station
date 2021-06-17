@@ -21,6 +21,7 @@ class User {
   @Column()
   email: string;
 
+  @Column()
   telefone: string;
 
   @Column()

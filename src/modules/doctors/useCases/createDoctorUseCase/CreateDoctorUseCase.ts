@@ -1,12 +1,17 @@
+import { inject, injectable } from "tsyringe";
+
 import { AppError } from "../../../../shared/errors/AppError";
 import { IUsersRepository } from "../../../accounts/respositories/IUsersRepository";
 import { ICreateDoctorDTO } from "../../dtos/ICreateDoctorDTO";
 import { Doctor } from "../../infra/typeorm/entities/Doctor";
 import { IDoctorsRepository } from "../../repositories/IDoctorsRepository";
 
+@injectable()
 class CreateDoctorUseCase {
   constructor(
+    @inject("UsersRepository")
     private usersRepository: IUsersRepository,
+    @inject("DoctorsRepository")
     private doctorsRepository: IDoctorsRepository
   ) {}
 
@@ -16,7 +21,7 @@ class CreateDoctorUseCase {
     availableAgenda,
     clinicAdress,
     bio,
-    category,
+    category_id,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const userExists = await this.usersRepository.findById(user_id);
 
@@ -30,7 +35,7 @@ class CreateDoctorUseCase {
       availableAgenda,
       clinicAdress,
       bio,
-      category,
+      category_id,
     });
 
     return user;

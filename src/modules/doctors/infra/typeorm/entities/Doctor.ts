@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToOne,
   OneToOne,
+  PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
 
@@ -13,8 +15,9 @@ import { Category } from "./Category";
 
 @Entity("doctors")
 class Doctor {
+  @PrimaryColumn()
   @OneToOne(() => User)
-  @JoinTable({ name: "user_id" })
+  @JoinColumn({ name: "user_id" })
   user_id: string;
 
   @Column()
@@ -35,8 +38,11 @@ class Doctor {
   @Column()
   bio: string;
 
+  @Column({ name: "category_id" })
+  category_id: string;
+
   @ManyToOne(() => Category)
-  @JoinTable({ name: "category_id" })
+  @JoinColumn({ name: "category_id" })
   category: Category;
 
   @CreateDateColumn()

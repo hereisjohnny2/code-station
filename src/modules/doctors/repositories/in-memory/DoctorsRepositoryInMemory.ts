@@ -8,8 +8,8 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
     this.doctors = [];
   }
 
-  async findById(doctor_id: string): Promise<Doctor> {
-    const doctor = this.doctors.find((doctor) => doctor.user_id === doctor_id);
+  async findById(id: string): Promise<Doctor> {
+    const doctor = this.doctors.find((doctor) => doctor.user_id === id);
     return doctor;
   }
 
@@ -19,7 +19,7 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
     clinicAdress,
     availableAgenda,
     bio,
-    category,
+    category_id,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const doctor = new Doctor();
     Object.assign(doctor, {
@@ -28,7 +28,7 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
       clinicAdress,
       availableAgenda,
       bio,
-      category,
+      category_id,
     });
     this.doctors.push(doctor);
 
