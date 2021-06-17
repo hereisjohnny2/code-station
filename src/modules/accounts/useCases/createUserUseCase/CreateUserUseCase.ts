@@ -12,7 +12,12 @@ class CreateUserUseCase {
     private userRepository: IUsersRepository
   ) {}
 
-  async execute({ name, email, password }: ICreateUserDTO): Promise<void> {
+  async execute({
+    name,
+    email,
+    password,
+    telefone,
+  }: ICreateUserDTO): Promise<void> {
     const emailAlreadyInUse = await this.userRepository.findByEmail(email);
     if (emailAlreadyInUse) {
       throw new AppError("This email is already in use!");
@@ -23,6 +28,7 @@ class CreateUserUseCase {
       name,
       email,
       password: passwordHash,
+      telefone,
     });
   }
 }

@@ -24,6 +24,7 @@ describe("Create Doctor", () => {
       name: "User1",
       email: "user@mail.com",
       password: "userpass",
+      telefone: "22222222",
     });
 
     const doctor = await createDoctorUseCase.execute({

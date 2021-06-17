@@ -21,6 +21,8 @@ class User {
   @Column()
   email: string;
 
+  telefone: string;
+
   @Column()
   avatar?: string;
 
