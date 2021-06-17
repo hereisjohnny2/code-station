@@ -1,6 +1,6 @@
 import { Connection, createConnection, getConnectionOptions } from "typeorm";
 
-export default async (host = "database_name"): Promise<Connection> => {
+export default async (host = "codestation_database"): Promise<Connection> => {
   const defaultOptions = await getConnectionOptions();
 
   return createConnection(
