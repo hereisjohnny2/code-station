@@ -22,6 +22,7 @@ describe("Authenticate Use", () => {
       email: "user@test.com",
       name: "user test",
       password: "1234",
+      telefone: "22222222",
     };
 
     await createUserUseCase.execute(user);
@@ -48,6 +49,7 @@ describe("Authenticate Use", () => {
         email: "user@test.com",
         name: "user test",
         password: "1234",
+        telefone: "22222222",
       };
 
       await authenticateUserUseCase.execute({
