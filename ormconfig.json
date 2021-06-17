@@ -4,7 +4,7 @@
   "host": "localhost",
   "username": "postgres",
   "password": "postgres",
-  "database": "datbase_name",
+  "database": "code_station",
   "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/shared/infra/typeorm/migrations"
