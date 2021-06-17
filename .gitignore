@@ -1,0 +1,8 @@
+node_modules
+.vscode
+dist
+tmp
+1615818549022-attachment.csv
+.env
+
+yarn.lock
