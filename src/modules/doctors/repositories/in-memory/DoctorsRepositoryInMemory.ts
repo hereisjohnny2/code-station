@@ -7,6 +7,12 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
   constructor() {
     this.doctors = [];
   }
+
+  async findById(doctor_id: string): Promise<Doctor> {
+    const doctor = this.doctors.find((doctor) => doctor.user_id === doctor_id);
+    return doctor;
+  }
+
   async create({
     user_id,
     crm,
@@ -23,6 +29,10 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
     this.doctors.push(doctor);
 
     return doctor;
+  }
+
+  async list(): Promise<Doctor[]> {
+    return this.doctors;
   }
 }
 
