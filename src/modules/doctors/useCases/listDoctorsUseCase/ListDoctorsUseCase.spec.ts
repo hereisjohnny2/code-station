@@ -27,6 +27,7 @@ describe("List Doctors", () => {
       user_id: user.id,
       crm: 123456789,
       clinicAdress: "St. A, 123",
+      bio: "User's Bio",
       availableAgenda: "Mon. 18:00 - 20:00",
     });
 

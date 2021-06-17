@@ -5,6 +5,7 @@ class Doctor {
   availableAgenda: string;
   rating: number;
   ratingCount: number;
+  bio: string;
   created_at?: Date;
   updated_at?: Date;
 

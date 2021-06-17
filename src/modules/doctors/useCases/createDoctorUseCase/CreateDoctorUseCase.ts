@@ -15,6 +15,7 @@ class CreateDoctorUseCase {
     crm,
     availableAgenda,
     clinicAdress,
+    bio,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const userExists = await this.usersRepository.findById(user_id);
 
@@ -27,6 +28,7 @@ class CreateDoctorUseCase {
       crm,
       availableAgenda,
       clinicAdress,
+      bio,
     });
 
     return user;

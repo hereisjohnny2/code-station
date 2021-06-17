@@ -18,6 +18,7 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
     crm,
     clinicAdress,
     availableAgenda,
+    bio,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const doctor = new Doctor();
     Object.assign(doctor, {
@@ -25,6 +26,7 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
       crm,
       clinicAdress,
       availableAgenda,
+      bio,
     });
     this.doctors.push(doctor);
 

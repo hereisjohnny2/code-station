@@ -32,6 +32,7 @@ describe("Create Doctor", () => {
       crm: 123456789,
       clinicAdress: "St. A, 123",
       availableAgenda: "Mon. 18:00 - 20:00",
+      bio: "User's Bio",
     });
 
     expect(doctor).toHaveProperty("user_id");
@@ -43,6 +44,7 @@ describe("Create Doctor", () => {
         user_id: "fakeUserId",
         crm: 123456789,
         clinicAdress: "St. A, 123",
+        bio: "User's Bio",
         availableAgenda: "Mon. 18:00 - 20:00",
       });
     }).rejects.toBeInstanceOf(AppError);

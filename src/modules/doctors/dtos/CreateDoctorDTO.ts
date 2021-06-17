@@ -3,6 +3,7 @@ interface ICreateDoctorDTO {
   crm: number;
   clinicAdress: string;
   availableAgenda: string;
+  bio: string;
 }
 
 export { ICreateDoctorDTO };
