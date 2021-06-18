@@ -8,6 +8,7 @@ import {
   PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 
 import { User } from "../../../../accounts/infra/typeorm/entities/User";
 import { Category } from "./Category";
@@ -15,9 +16,14 @@ import { Category } from "./Category";
 @Entity("doctors")
 class Doctor {
   @PrimaryColumn()
+  id: string;
+
+  @Column()
+  user_id: string;
+
   @OneToOne(() => User)
   @JoinColumn({ name: "user_id" })
-  user_id: string;
+  user: User;
 
   @Column()
   crm: number;
@@ -51,6 +57,7 @@ class Doctor {
   updated_at?: Date;
 
   constructor() {
+    if (!this.id) this.id = uuidv4();
     if (!this.rating) this.rating = 0;
     if (!this.ratingCount) this.ratingCount = 0;
   }

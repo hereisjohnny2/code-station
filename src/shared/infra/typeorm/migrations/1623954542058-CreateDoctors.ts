@@ -7,10 +7,14 @@ export class CreateDoctors1623954542058 implements MigrationInterface {
         name: "doctors",
         columns: [
           {
+            name: "id",
+            type: "uuid",
+            isPrimary: true,
+          },
+          {
             name: "user_id",
             type: "uuid",
             isUnique: true,
-            isPrimary: true,
           },
           {
             name: "crm",
@@ -27,10 +31,12 @@ export class CreateDoctors1623954542058 implements MigrationInterface {
           {
             name: "rating",
             type: "numeric",
+            default: "0",
           },
           {
             name: "ratingCount",
             type: "numeric",
+            default: "0",
           },
           {
             name: "bio",

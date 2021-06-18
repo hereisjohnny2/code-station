@@ -51,12 +51,12 @@ describe("Rate Doctor", () => {
     expect(doctor.rating).toBe(5);
   });
 
-  it("should not be able to rate a non existent doctor", () => {
-    expect(async () => {
-      await rateDoctorUseCase.execute({
+  it("should not be able to rate a non existent doctor", async () => {
+    await expect(
+      rateDoctorUseCase.execute({
         doctor_id: "fakeDoctorId",
         rate: 5,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      })
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

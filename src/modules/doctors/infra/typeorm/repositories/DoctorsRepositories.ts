@@ -38,8 +38,8 @@ class DoctorsRepositories implements IDoctorsRepository {
     return doctors;
   }
 
-  async findById(id: string): Promise<Doctor> {
-    const doctor = await this.repository.findOne(id);
+  async findByUser(user_id: string): Promise<Doctor> {
+    const doctor = await this.repository.findOne({ user_id });
     return doctor;
   }
 }

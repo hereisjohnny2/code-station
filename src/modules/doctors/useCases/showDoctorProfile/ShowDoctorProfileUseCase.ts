@@ -12,7 +12,7 @@ class ShowDoctorProfileUseCase {
   ) {}
 
   async execute(doctor_id: string): Promise<Doctor> {
-    const doctor = await this.doctorsRespository.findById(doctor_id);
+    const doctor = await this.doctorsRespository.findByUser(doctor_id);
 
     if (!doctor) {
       throw new AppError("Doctor not found!");
