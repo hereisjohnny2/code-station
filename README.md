@@ -1,11 +1,13 @@
 <div>
-    <h1>Base NodeJS Repository</h1>
-    <p>This is a base repository to initiate new projects in NodeJS a bit faster.</p>
+    <h1>Code/Station Challenge - Backend</h1>
+    <p>TBackend service to MedicalAid Code/Station Challenge</p>
 </div>
 
 # Description
 
-This repository was created to make a project initialization a bit easier. Configure all the folder struct, eslint, docker, orm, sometimes can be really lame, so by cloning this in can just jump straight to the code. Use this template and give it your project name to start, then follow the [instructions](#Run-the-project) to initialize it. After that you can use this readme to document your project as well.
+This project is a backend application part of the code/station hackathon. It servers a the frontend which can be found [here](). The application as whole has the propouse to give patients with some urgency a first contact by WhatsApp with a nearby doctor, who would be available to help then. Any doctor with a valid CRM number can create an account on the plataform. It's also necessary to give a valid fone number with WhatsApp access. The doctor will also choose a major category (or specialitty) which he or she is more related to.
+
+From the pacient side, after choosing the doctor, a form with some information need to fill up. There are questions asking about weight, age, height and diseases historical. The awnsers will be sent to the doctor as a first contact. The patient might also want to filter the doctors by symtoms (which are related with the category) and category.
 
 # Use Cases and Requirements
 
@@ -33,5 +35,5 @@ $ git clone https://github.com/hereisjohnny2/your-project-name.git
 $ docker-compose up -d
 ```
 
-# Rotas
+# Routes
 
