@@ -11,7 +11,7 @@ import { ICategoriesRepository } from "../../repositories/ICategoriesRepository"
 let connection: Connection;
 let categoryRepository: ICategoriesRepository;
 
-describe("Create Doctor Controller", () => {
+describe("Show Doctor Profile", () => {
   beforeAll(async () => {
     connection = await createConnection();
     await connection.runMigrations();
@@ -34,7 +34,7 @@ describe("Create Doctor Controller", () => {
     await connection.close();
   });
 
-  it("should be able to create a new user", async () => {
+  it("should be able to show a doctor profile", async () => {
     const responsToken = await request(app).post("/sessions").send({
       email: "admin@codestation.com",
       password: "admin",
@@ -47,7 +47,7 @@ describe("Create Doctor Controller", () => {
       symptomesAssociated: ["Symptome 1", "Symptome 2"],
     });
 
-    const response = await request(app)
+    const createdDoctorResponse = await request(app)
       .post("/doctors")
       .send({
         user_id: user.id,
@@ -61,6 +61,9 @@ describe("Create Doctor Controller", () => {
         Authorization: `Bearer ${token}`,
       });
 
-    expect(response.status).toBe(201);
+    const response = await request(app).get(`/doctors/${user.id}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.user_id).toBe(createdDoctorResponse.body.user_id);
   });
 });
