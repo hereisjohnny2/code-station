@@ -31,5 +31,13 @@ class SymptomRepositoryInMemory implements ISymptomRepository {
 
     return symptom;
   }
+
+  async findByIds(ids: string[]): Promise<Symptom[]> {
+    const symptom = await this.symptomes.filter((symptom) =>
+      ids.includes(symptom.id)
+    );
+
+    return symptom;
+  }
 }
 export { SymptomRepositoryInMemory };
