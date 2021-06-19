@@ -7,18 +7,29 @@ class SymptomRepositoryInMemory implements ISymptomRepository {
   constructor() {
     this.symptomes = [];
   }
+
   async create(name: string): Promise<Symptom> {
     const symptom = new Symptom();
     symptom.name = name;
     this.symptomes.push(symptom);
     return symptom;
   }
+
   async findById(id: string): Promise<Symptom> {
     const symptom = this.symptomes.find((symptom) => symptom.id === id);
     return symptom;
   }
+
   async list(): Promise<Symptom[]> {
     return this.symptomes;
+  }
+
+  async findByName(name: string): Promise<Symptom> {
+    const symptom = await this.symptomes.find(
+      (symptom) => symptom.name === name
+    );
+
+    return symptom;
   }
 }
 export { SymptomRepositoryInMemory };

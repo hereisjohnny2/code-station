@@ -23,6 +23,11 @@ class SymptomesRepository implements ISymptomRepository {
     return symptom;
   }
 
+  async findByName(name: string): Promise<Symptom> {
+    const symptom = await this.repository.findOne({ name });
+    return symptom;
+  }
+
   async list(): Promise<Symptom[]> {
     const symptomes = await this.repository.find();
     return symptomes;
