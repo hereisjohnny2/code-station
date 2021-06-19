@@ -2,10 +2,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+
+import { Symptom } from "./Symptom";
 
 @Entity("categories")
 class Category {
@@ -14,6 +18,14 @@ class Category {
 
   @Column()
   name: string;
+
+  @ManyToMany(() => Symptom)
+  @JoinTable({
+    name: "symptomes_categories",
+    joinColumns: [{ name: "category_id" }],
+    inverseJoinColumns: [{ name: "symptom_id" }],
+  })
+  symptomes: Symptom[];
 
   @CreateDateColumn()
   created_at?: Date;

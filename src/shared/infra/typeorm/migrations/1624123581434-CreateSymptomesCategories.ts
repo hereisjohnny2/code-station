@@ -13,13 +13,31 @@ export class CreateSymptomesCategories1624123581434
             type: "uuid",
           },
           {
-            name: "symptome_id",
+            name: "symptom_id",
             type: "uuid",
           },
           {
             name: "created_at",
             type: "timestamp",
             default: "now()",
+          },
+        ],
+        foreignKeys: [
+          {
+            name: "FKSymptomCategory",
+            referencedTableName: "symptomes",
+            referencedColumnNames: ["id"],
+            columnNames: ["symptom_id"],
+            onDelete: "SET NULL",
+            onUpdate: "SET NULL",
+          },
+          {
+            name: "FKCategorySymptom",
+            referencedTableName: "categories",
+            referencedColumnNames: ["id"],
+            columnNames: ["category_id"],
+            onDelete: "SET NULL",
+            onUpdate: "SET NULL",
           },
         ],
       })
