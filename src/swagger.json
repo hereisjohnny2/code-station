@@ -37,7 +37,7 @@
       "name": "Doctor"
     },
     {
-      "name": "Patient"
+      "name": "Category"
     }
   ],
   "paths": {
@@ -292,6 +292,195 @@
         "responses": {
           "200": {
             "description": "Doctor successfully created."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Doctor"],
+        "summary": "List all doctors.",
+        "description": "Lists all doctors in database given a category_id. If the id is not given it will return all data available.",
+        "operationId": "listDoctors",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category_id",
+            "description": "Category unique id.",
+            "required": "false",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success."
+          }
+        }
+      }     
+    },
+    "/doctors/{doctor_id}": {
+      "get": {
+        "tags": ["Doctor"],
+        "summary": "Show doctor profile.",
+        "description": "Show doctor profile with crm, address, number, category and bio.",
+        "operationId": "showDoctorProfile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "doctor_id",
+            "description": "Doctor unique id.",
+            "required": "true",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success."
+          },
+          "400": {
+            "description": "Doctor not found."
+          }
+        }
+      }
+    },
+    "/categories": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Create a category.",
+        "description": "Creates a category which would be related with a doctor. Categories should have only a name attribute",
+        "operationId": "createCategory",
+        "requestBody": {
+          "content": {
+            "application-json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "desctiption": "Category name."
+                  }
+                },
+                "example": {
+                  "name": "Cardiologista"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Category successfully created."
+          },
+          "400": {
+            "description": "Name already taken."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Category"],
+        "summary": "List all categories.",
+        "description": "Lists all categories in the datebase.",
+        "operationId": "listCategory",
+        "responses": {
+          "200": {
+            "description": "Success."
+          }
+        }
+      }
+    },
+    "/symptomes": {
+      "post": {
+        "tags": ["Symptom"],
+        "summary": "Create a symptome.",
+        "description": "Creates a symptome which would be related with a category. Symptomes should have only a name attribute",
+        "operationId": "createSymptom",
+        "requestBody": {
+          "content": {
+            "application-json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "desctiption": "Symptom name."
+                  }
+                },
+                "example": {
+                  "name": "Dor no peito"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Symptom successfully created."
+          },
+          "400": {
+            "description": "Name already taken."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Symptom"],
+        "summary": "List all symptomes.",
+        "description": "Lists all symptomes in the datebase.",
+        "operationId": "listSymptom",
+        "responses": {
+          "200": {
+            "description": "Success."
+          }
+        }
+      }
+    },
+    "/category/symptomes/{category_id}": {
+      "post": {
+        "tags": ["Doctor"],
+        "summary": "Add a list on symptomes to a category.",
+        "description": "Add a lista of existent symptomes ids to a category.",
+        "operationId": "categorySymptomes",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "category_id",
+            "description": "Category unique id.",
+            "required": "true",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application-json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "symptomes_id": {
+                    "type": "string[]",
+                    "desctiption": "List of symptomes ids that would have some relation with the category."
+                  }
+                },
+                "example": {
+                  "user_id": "d8fe4d81-8348-4676-a6d4-80f60334c53b",
+                  "crm": 123456789,
+                  "clinicAdress": "St. A, 123",
+                  "availableAgenda": "Mon. 18:00 - 20:00",
+                  "bio": "Doctor's Background",
+                  "category_id": "d8fe445v1-8348-4676-a6d4-80y60334c53b"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success."
+          },
+          "400": {
+            "description": "Category not found."
           }
         }
       }
