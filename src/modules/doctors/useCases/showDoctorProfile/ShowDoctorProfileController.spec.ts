@@ -44,7 +44,6 @@ describe("Show Doctor Profile", () => {
 
     const category = await categoryRepository.create({
       name: "Category Test",
-      symptomesAssociated: ["Symptome 1", "Symptome 2"],
     });
 
     const createdDoctorResponse = await request(app)

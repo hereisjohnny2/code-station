@@ -33,7 +33,6 @@ describe("Create Doctor", () => {
 
     const category = await categoryRepository.create({
       name: "Category 1",
-      symptomesAssociated: ["symptome1", "symptome2"],
     });
 
     const doctor = await createDoctorUseCase.execute({
@@ -53,7 +52,6 @@ describe("Create Doctor", () => {
     expect(async () => {
       const category = await categoryRepository.create({
         name: "Category 1",
-        symptomesAssociated: ["symptome1", "symptome2"],
       });
 
       await createDoctorUseCase.execute({

@@ -30,7 +30,6 @@ describe("Show Doctor Profile", () => {
 
     const category = await categoryRepository.create({
       name: "Category 1",
-      symptomesAssociated: ["symptome1", "symptome2"],
     });
 
     const doctor = await doctorsRepository.create({

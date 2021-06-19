@@ -7,8 +7,8 @@ import {
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("categories")
-class Category {
+@Entity("symptomes")
+class Symptom {
   @PrimaryColumn()
   id: string;
 
@@ -16,14 +16,14 @@ class Category {
   name: string;
 
   @CreateDateColumn()
-  created_at?: Date;
+  created_at: Date;
 
   @UpdateDateColumn()
-  updated_at?: Date;
+  updated_at: Date;
 
   constructor() {
     if (!this.id) this.id = uuidV4();
   }
 }
 
-export { Category };
+export { Symptom };

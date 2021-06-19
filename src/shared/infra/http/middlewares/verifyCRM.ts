@@ -14,7 +14,7 @@ export async function verifyCRM(
     const crmApiRequestRey = 4502488655;
 
     const api = axios.create({
-      baseURL: "https://www.consultacrm.com.br/api/index.php",
+      baseURL: "https://www.consultacrm.com.br",
       params: {
         tipo: "crm",
         q: crm,
@@ -24,11 +24,13 @@ export async function verifyCRM(
       },
     });
 
-    const crmData = await api.get("/");
+    const crmData = await api.get("/api/index.php");
 
-    if (crmData.data.situacao !== "Ativo") {
-      throw new AppError("CRM is not active!");
-    }
+    console.log(crmData.data.item);
+
+    // if (crmData.data.situacao !== "Ativo") {
+    //   throw new AppError("CRM is not active!");
+    // }
 
     next();
   } catch (error) {

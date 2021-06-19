@@ -44,7 +44,6 @@ describe("Create Doctor Controller", () => {
 
     const category = await categoryRepository.create({
       name: "Category Test",
-      symptomesAssociated: ["Symptome 1", "Symptome 2"],
     });
 
     const response = await request(app)
