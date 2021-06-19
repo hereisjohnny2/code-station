@@ -11,8 +11,8 @@ class ShowDoctorProfileUseCase {
     private doctorsRespository: IDoctorsRepository
   ) {}
 
-  async execute(doctor_id: string): Promise<Doctor> {
-    const doctor = await this.doctorsRespository.findByUser(doctor_id);
+  async execute(id: string): Promise<Doctor> {
+    const doctor = await this.doctorsRespository.findById(id);
 
     if (!doctor) {
       throw new AppError("Doctor not found!");

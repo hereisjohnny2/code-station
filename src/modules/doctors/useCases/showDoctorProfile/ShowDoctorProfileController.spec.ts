@@ -53,6 +53,7 @@ describe("Show Doctor Profile", () => {
         user_id: user.id,
         crm: 123456789,
         clinicAdress: "St. A, 123",
+        uf: "RJ",
         availableAgenda: "Mon. 18:00 - 20:00",
         bio: "User's Bio",
         category_id: category.id,
@@ -61,7 +62,9 @@ describe("Show Doctor Profile", () => {
         Authorization: `Bearer ${token}`,
       });
 
-    const response = await request(app).get(`/doctors/${user.id}`);
+    const { id: doctor_id } = createdDoctorResponse.body;
+
+    const response = await request(app).get(`/doctors/${doctor_id}`);
 
     expect(response.status).toBe(200);
     expect(response.body.user_id).toBe(createdDoctorResponse.body.user_id);

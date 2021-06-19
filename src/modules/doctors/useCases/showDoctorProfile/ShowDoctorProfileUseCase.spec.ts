@@ -40,9 +40,10 @@ describe("Show Doctor Profile", () => {
       bio: "User's Bio",
       availableAgenda: "Mon. 18:00 - 20:00",
       category_id: category.id,
+      uf: "RJ",
     });
 
-    const foundDoctor = await showDoctorProfileUseCase.execute(doctor.user_id);
+    const foundDoctor = await showDoctorProfileUseCase.execute(doctor.id);
 
     expect(foundDoctor).toMatchObject(doctor);
   });

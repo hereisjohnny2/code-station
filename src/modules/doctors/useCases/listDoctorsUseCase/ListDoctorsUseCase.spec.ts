@@ -39,6 +39,7 @@ describe("List Doctors", () => {
       bio: "User's Bio",
       availableAgenda: "Mon. 18:00 - 20:00",
       category_id: category.id,
+      uf: "RJ",
     });
 
     const doctors = await listDoctorsUseCase.execute();

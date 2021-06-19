@@ -40,6 +40,7 @@ describe("Rate Doctor", () => {
       bio: "User's Bio",
       availableAgenda: "Mon. 18:00 - 20:00",
       category_id: category.id,
+      uf: "RJ",
     });
 
     await rateDoctorUseCase.execute({

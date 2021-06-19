@@ -56,6 +56,7 @@ describe("Create Doctor Controller", () => {
         availableAgenda: "Mon. 18:00 - 20:00",
         bio: "User's Bio",
         category_id: category.id,
+        uf: "RJ",
       })
       .set({
         Authorization: `Bearer ${token}`,

@@ -5,8 +5,15 @@ import { CreateDoctorUseCase } from "./CreateDoctorUseCase";
 
 class CreateDoctorController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { user_id, crm, clinicAdress, availableAgenda, bio, category_id } =
-      request.body;
+    const {
+      user_id,
+      crm,
+      clinicAdress,
+      availableAgenda,
+      bio,
+      category_id,
+      uf,
+    } = request.body;
     const createDoctorUseCase = container.resolve(CreateDoctorUseCase);
 
     const doctor = await createDoctorUseCase.execute({
@@ -16,6 +23,7 @@ class CreateDoctorController {
       availableAgenda,
       bio,
       category_id,
+      uf,
     });
 
     return response.status(201).json(doctor);

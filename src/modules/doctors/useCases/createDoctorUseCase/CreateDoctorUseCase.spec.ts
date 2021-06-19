@@ -43,6 +43,7 @@ describe("Create Doctor", () => {
       availableAgenda: "Mon. 18:00 - 20:00",
       bio: "User's Bio",
       category_id: category.id,
+      uf: "RJ",
     });
 
     expect(doctor).toHaveProperty("user_id");
@@ -62,6 +63,7 @@ describe("Create Doctor", () => {
         bio: "User's Bio",
         availableAgenda: "Mon. 18:00 - 20:00",
         category_id: category.id,
+        uf: "RJ",
       });
     }).rejects.toBeInstanceOf(AppError);
   });

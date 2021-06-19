@@ -22,6 +22,7 @@ class CreateDoctorUseCase {
     clinicAdress,
     bio,
     category_id,
+    uf,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const userExists = await this.usersRepository.findById(user_id);
 
@@ -36,6 +37,7 @@ class CreateDoctorUseCase {
       clinicAdress,
       bio,
       category_id,
+      uf,
     });
 
     return user;

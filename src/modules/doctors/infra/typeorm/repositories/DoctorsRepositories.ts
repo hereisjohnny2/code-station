@@ -18,6 +18,7 @@ class DoctorsRepositories implements IDoctorsRepository {
     availableAgenda,
     bio,
     category_id,
+    uf,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const doctor = this.repository.create({
       user_id,
@@ -26,6 +27,7 @@ class DoctorsRepositories implements IDoctorsRepository {
       availableAgenda,
       bio,
       category_id,
+      uf,
     });
 
     await this.repository.save(doctor);
@@ -40,6 +42,11 @@ class DoctorsRepositories implements IDoctorsRepository {
 
   async findByUser(user_id: string): Promise<Doctor> {
     const doctor = await this.repository.findOne({ user_id });
+    return doctor;
+  }
+
+  async findById(id: string): Promise<Doctor> {
+    const doctor = await this.repository.findOne(id);
     return doctor;
   }
 }

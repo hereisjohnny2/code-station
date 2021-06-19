@@ -5,6 +5,7 @@ interface IDoctorsRepository {
   create(data: ICreateDoctorDTO): Promise<Doctor>;
   list(): Promise<Doctor[]>;
   findByUser(user_id: string): Promise<Doctor>;
+  findById(id: string): Promise<Doctor>;
 }
 
 export { IDoctorsRepository };

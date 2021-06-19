@@ -29,6 +29,9 @@ class Doctor {
   crm: number;
 
   @Column()
+  uf: string;
+
+  @Column()
   clinicAdress: string;
 
   @Column()

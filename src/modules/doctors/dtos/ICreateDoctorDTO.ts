@@ -4,6 +4,7 @@ interface ICreateDoctorDTO {
   clinicAdress: string;
   availableAgenda: string;
   bio: string;
+  uf: string;
   category_id: string;
 }
 

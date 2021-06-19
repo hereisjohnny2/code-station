@@ -38,6 +38,11 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
   async list(): Promise<Doctor[]> {
     return this.doctors;
   }
+
+  async findById(id: string): Promise<Doctor> {
+    const doctor = this.doctors.find((doctor) => doctor.id === id);
+    return doctor;
+  }
 }
 
 export { DoctorsRepositoryInMemory };
