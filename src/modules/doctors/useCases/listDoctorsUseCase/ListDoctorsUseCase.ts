@@ -1,11 +1,17 @@
+import { inject, injectable } from "tsyringe";
+
 import { Doctor } from "../../infra/typeorm/entities/Doctor";
 import { IDoctorsRepository } from "../../repositories/IDoctorsRepository";
 
+@injectable()
 class ListDoctorsUseCase {
-  constructor(private doctorsRepository: IDoctorsRepository) {}
+  constructor(
+    @inject("DoctorsRepository")
+    private doctorsRepository: IDoctorsRepository
+  ) {}
 
-  async execute(): Promise<Doctor[]> {
-    const users = await this.doctorsRepository.list();
+  async execute(category_id?: string): Promise<Doctor[]> {
+    const users = await this.doctorsRepository.list(category_id);
 
     return users;
   }

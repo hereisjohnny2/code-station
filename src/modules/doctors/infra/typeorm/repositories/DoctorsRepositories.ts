@@ -35,8 +35,14 @@ class DoctorsRepositories implements IDoctorsRepository {
     return doctor;
   }
 
-  async list(): Promise<Doctor[]> {
-    const doctors = await this.repository.find();
+  async list(category_id?: string): Promise<Doctor[]> {
+    const doctorsQuery = this.repository.createQueryBuilder("doctors");
+
+    if (category_id) {
+      doctorsQuery.where("doctors.category_id = :category_id", { category_id });
+    }
+
+    const doctors = await doctorsQuery.getMany();
     return doctors;
   }
 
