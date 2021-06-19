@@ -26,11 +26,13 @@ export async function verifyCRM(
 
     const crmData = await api.get("/api/index.php");
 
-    console.log(crmData.data.item);
+    const { situacao } = crmData.data.item[0];
 
-    // if (crmData.data.situacao !== "Ativo") {
-    //   throw new AppError("CRM is not active!");
-    // }
+    console.log(situacao);
+
+    if (situacao !== "Ativo") {
+      throw new AppError("CRM is not active!");
+    }
 
     next();
   } catch (error) {
