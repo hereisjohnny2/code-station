@@ -12,6 +12,7 @@ class DoctorsRepositories implements IDoctorsRepository {
   }
 
   async create({
+    id,
     user_id,
     crm,
     clinicAdress,
@@ -19,8 +20,11 @@ class DoctorsRepositories implements IDoctorsRepository {
     bio,
     category_id,
     uf,
+    rating,
+    ratingCount,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const doctor = this.repository.create({
+      id,
       user_id,
       crm,
       clinicAdress,
@@ -28,6 +32,8 @@ class DoctorsRepositories implements IDoctorsRepository {
       bio,
       category_id,
       uf,
+      rating,
+      ratingCount,
     });
 
     await this.repository.save(doctor);

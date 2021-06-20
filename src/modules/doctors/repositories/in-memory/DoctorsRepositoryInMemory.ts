@@ -15,11 +15,14 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
 
   async create({
     user_id,
+    id,
     crm,
     clinicAdress,
     availableAgenda,
     bio,
     category_id,
+    rating,
+    ratingCount,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const doctor = new Doctor();
     Object.assign(doctor, {
@@ -29,6 +32,9 @@ class DoctorsRepositoryInMemory implements IDoctorsRepository {
       availableAgenda,
       bio,
       category_id,
+      id,
+      rating,
+      ratingCount,
     });
     this.doctors.push(doctor);
 
