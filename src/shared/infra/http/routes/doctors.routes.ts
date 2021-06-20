@@ -20,8 +20,8 @@ doctorsRoutes.post(
   verifyCRM,
   createDcotorController.handle
 );
-doctorsRoutes.get("/:doctor_id", showDoctorProfileController.handle);
+doctorsRoutes.get("/:user_id", showDoctorProfileController.handle);
 doctorsRoutes.get("/", listDoctorsController.handle);
-doctorsRoutes.patch("/:doctor_id", rateDoctorController.handle);
+doctorsRoutes.patch("/rate/:doctor_id", rateDoctorController.handle);
 
 export { doctorsRoutes };
