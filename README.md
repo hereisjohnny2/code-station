@@ -61,11 +61,11 @@ Create a doctor with a given category, bio, CRM number, available agenda, and cl
 
 List all doctors in the plataform. A query search can be done by the category ID.
 
-## GET `/doctors/:user_id
+## GET `/doctors/:user_id`
 
 Shows a doctor profile by the user id related to it.
 
-## PATCH `/doctors/rate/:doctor_id
+## PATCH `/doctors/rate/:doctor_id`
 
 Rates a doctor with a valid number.
 
@@ -77,7 +77,7 @@ Creates a new category with a unique name.
 
 Lists availables categories in the database.
 
-## POST `/categories/symptomes/:category_id
+## POST `/categories/symptomes/:category_id`
 
 Associates a list of symptomes to a category.
 
