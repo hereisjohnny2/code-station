@@ -22,6 +22,8 @@ class DoctorsRepositories implements IDoctorsRepository {
     uf,
     rating,
     ratingCount,
+    user,
+    category,
   }: ICreateDoctorDTO): Promise<Doctor> {
     const doctor = this.repository.create({
       id,
@@ -34,6 +36,8 @@ class DoctorsRepositories implements IDoctorsRepository {
       uf,
       rating,
       ratingCount,
+      user,
+      category,
     });
 
     await this.repository.save(doctor);
@@ -42,23 +46,29 @@ class DoctorsRepositories implements IDoctorsRepository {
   }
 
   async list(category_id?: string): Promise<Doctor[]> {
-    const doctorsQuery = this.repository.createQueryBuilder("doctors");
-
-    if (category_id) {
-      doctorsQuery.where("doctors.category_id = :category_id", { category_id });
-    }
-
-    const doctors = await doctorsQuery.getMany();
+    const doctors = category_id
+      ? await this.repository.find({
+          where: { category_id },
+          relations: ["category", "user"],
+        })
+      : await this.repository.find({ relations: ["category", "user"] });
     return doctors;
   }
 
   async findByUser(user_id: string): Promise<Doctor> {
-    const doctor = await this.repository.findOne({ user_id });
+    const doctor = await this.repository.findOne(
+      { user_id },
+      {
+        relations: ["category", "user"],
+      }
+    );
     return doctor;
   }
 
   async findById(id: string): Promise<Doctor> {
-    const doctor = await this.repository.findOne(id);
+    const doctor = await this.repository.findOne(id, {
+      relations: ["category", "users"],
+    });
     return doctor;
   }
 }
