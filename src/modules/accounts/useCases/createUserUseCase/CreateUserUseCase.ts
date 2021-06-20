@@ -18,6 +18,10 @@ class CreateUserUseCase {
     password,
     telefone,
   }: ICreateUserDTO): Promise<void> {
+    if (password.length < 6) {
+      throw new AppError("Password should have at least 6 characters.");
+    }
+
     const emailAlreadyInUse = await this.userRepository.findByEmail(email);
     if (emailAlreadyInUse) {
       throw new AppError("This email is already in use!");
