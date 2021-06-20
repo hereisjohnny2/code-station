@@ -28,8 +28,6 @@ export async function verifyCRM(
 
     const { situacao } = crmData.data.item[0];
 
-    console.log(situacao);
-
     if (situacao !== "Ativo") {
       throw new AppError("CRM is not active!");
     }
