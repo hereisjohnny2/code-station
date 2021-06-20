@@ -318,7 +318,7 @@
         }
       }     
     },
-    "/doctors/{doctor_id}": {
+    "/doctors/{user_id}": {
       "get": {
         "tags": ["Doctor"],
         "summary": "Show doctor profile.",
@@ -327,7 +327,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "doctor_id",
+            "name": "user_id",
             "description": "Doctor unique id.",
             "required": "true",
             "schema": {
